@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceasers cipher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="m-10 bg-gray-800 text-white">
     <form name="form" id="form">
-    <textarea id="inputMessage" rows="4" cols="50" placeholder="Type the text you want to encode here" oninput="decipher()"></textarea>
-    <input id="key" type="number" min="-25" max="25" onchange="decipher()">
-    <input checked onchange="decipher()" name="codingDirection" id = "encode" type="radio"><label for="encode">Encode</label>
-    <input onchange="decipher()" name="codingDirection" id = "decode" type="radio"><label for="decode">Decode</label>
-    <textarea id="outputMessage" rows="4" cols="50"></textarea>
+        <legend>Input:</legend>
+        </br>
+        <textarea id="inputMessage" rows="4" cols="50" placeholder="Type the text you want to encode here" oninput="decipher()" class="text-black"></textarea>
+        </br>
+        </br>
+        <label for="key" class="px-4">Shift amount</label>
+        <input id="key" type="number" min="-77" max="77" onchange="decipher()">
+        </br></br>
+        <div class="">
+        <input checked onchange="decipher()" name="codingDirection" id = "encode" type="radio"><label for="encode" class="px-4 py-4">Encode</label>
+        <input onchange="decipher()" name="codingDirection" id = "decode" type="radio"><label for="decode" class="px-4 py-4">Decode</label>
+        </div>
+        </br></br>
+        <legend>Output:</legend>
+        </br>
+        <textarea id="outputMessage" rows="4" cols="50" class="text-black" placeholder="Output will appear here"></textarea>
     </form>
     <script src="cipher.js"></script>
 </body>
