@@ -1,6 +1,6 @@
 // Main function called on input
 const decipher = () => {
-    const alphabet = ["a", "b", "c", "d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    const alphabet = ["a", "b", "c", "d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "A", "B", "C", "D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "0", "1", "2", "3","4","5","6","7","8", "9", "!", "@", "#", "$", "%", "^", "&", "*", ")", "(", "+", "=", ".", "_", "-"];
     let inputMessage = document.getElementById("inputMessage").value;
     let key = Number(document.getElementById("key").value);
     let outputMessage = document.getElementById("outputMessage");
@@ -15,15 +15,9 @@ const decipher = () => {
 
     // Loop through each letter of input string
     for (let i = 0; i < inputMessage.length; i++) {
-        let letterRegEx = /[a-zA-Z]/;
+        let validCharacterRegEx = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g;
         let letter = inputMessage[i];
-        if (letterRegEx.test(inputMessage[i])){
-            // Different output function for uppercase letters to maintain casing on output
-            let upperCaseRegEx = /[A-Z]/;
-            let upperCase = upperCaseRegEx.test(inputMessage[i]);
-            if (upperCase) {
-                letter = letter.toLowerCase();
-            }
+        if (validCharacterRegEx.test(inputMessage[i])){
             // Find index of each letter in our alphabet array
             let index = alphabet.indexOf(letter);
 
@@ -31,18 +25,14 @@ const decipher = () => {
             let newIndex = index + key;
 
             // Deal with shifts greater than length of alphabet
-            if (newIndex > 25) {
-                newIndex -= 26;
+            if (newIndex > 77) {
+                newIndex -= 77;
             } else if (index < 0) {
-                newIndex += 26;
+                newIndex += 77;
             }
 
             // Find letter corresponding to index and output it in output
             let newLetter = alphabet[newIndex];
-
-            if (upperCase) {
-                newLetter = newLetter.toUpperCase();
-            }
 
             outputText.push(newLetter);
         } else {
