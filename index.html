@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceasers cipher</title>
+</head>
+<body>
+    <form name="form" id="form">
+    <textarea id="inputMessage" rows="4" cols="50" placeholder="Type the text you want to encode here" oninput="decipher()"></textarea>
+    <input id="key" type="number" min="-25" max="25">
+    <textarea id="outputMessage" rows="4" cols="50"></textarea>
+    </form>
+    <script src="cipher.js"></script>
+</body>
+</html>
