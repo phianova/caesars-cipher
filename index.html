@@ -8,7 +8,9 @@
 <body>
     <form name="form" id="form">
     <textarea id="inputMessage" rows="4" cols="50" placeholder="Type the text you want to encode here" oninput="decipher()"></textarea>
-    <input id="key" type="number" min="-25" max="25">
+    <input id="key" type="number" min="-25" max="25" onchange="decipher()">
+    <input checked onchange="decipher()" name="codingDirection" id = "encode" type="radio"><label for="encode">Encode</label>
+    <input onchange="decipher()" name="codingDirection" id = "decode" type="radio"><label for="decode">Decode</label>
     <textarea id="outputMessage" rows="4" cols="50"></textarea>
     </form>
     <script src="cipher.js"></script>
