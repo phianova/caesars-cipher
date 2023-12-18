@@ -4,51 +4,55 @@ const decipher = () => {
     let inputMessage = document.getElementById("inputMessage").value;
     let key = Number(document.getElementById("key").value);
     let outputMessage = document.getElementById("outputMessage");
+    let decode = document.getElementById("decode");
 
     let outputText = [];
 
-// Loop through each letter of input string
+    // Reverse the key if we're decoding
+    if (decode.checked) {
+        key = -key;
+    }
+
+    // Loop through each letter of input string
     for (let i = 0; i < inputMessage.length; i++) {
         let letterRegEx = /[a-zA-Z]/;
         let letter = inputMessage[i];
-        //console.log("letter", inputMessage[i], "is Letter", letterRegEx.test(inputMessage[i]));
         if (letterRegEx.test(inputMessage[i])){
             // Different output function for uppercase letters to maintain casing on output
             let upperCaseRegEx = /[A-Z]/;
             let upperCase = upperCaseRegEx.test(inputMessage[i]);
             if (upperCase) {
                 letter = letter.toLowerCase();
-                console.log("uppercase letter", letter);
             }
-            
+            // Find index of each letter in our alphabet array
             let index = alphabet.indexOf(letter);
-            console.log("index", index);
 
+            // Identify new index based on key entered
             let newIndex = index + key;
-            console.log("key", key);
-            console.log("newIndex", newIndex);
 
+            // Deal with shifts greater than length of alphabet
+            if (newIndex > 25) {
+                newIndex -= 26;
+            } else if (index < 0) {
+                newIndex += 26;
+            }
+
+            // Find letter corresponding to index and output it in output
             let newLetter = alphabet[newIndex];
-            console.log("letter", newLetter);
 
             if (upperCase) {
                 newLetter = newLetter.toUpperCase();
-                console.log("new uppercase letter", newLetter)
             }
 
             outputText.push(newLetter);
-            console.log("output", outputText); 
         } else {
             let nonLetter = inputMessage[i];
             outputText.push(nonLetter);
-            console.log("output", outputText);    
         }
     }
 
-// Find index of each letter in our alphabet array
 
 
-// Find letter corresponding to index and output it in output
 
 // Extension: account for symbols in string!
 
